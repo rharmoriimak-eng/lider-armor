@@ -1227,7 +1227,7 @@ function renderMissions(){
 function populateEuSelect(){
   var sel=el('sel-eu');if(!sel)return;
   var cur=sel.value;
-  sel.innerHTML='<option value="">Selecione seu nome...</option>'+srt().map(function(l){return'<option value="'+l.id+'">'+l.nome+'</option>';}).join('');
+  sel.innerHTML='<option value="">Selecione seu nome...</option>'+ST.lideres.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(l){return'<option value="'+l.id+'">'+l.nome+'</option>';}).join('');
   if(cur)sel.value=cur;
 }
 
@@ -1510,7 +1510,7 @@ window.salvarContato=function(){var c=el('in-contato').value.trim();if(!c){toast
 
 function renderAdm(){
   var sl=el('sel-lider'),sv=sl?sl.value:'';
-  if(sl){sl.innerHTML='<option value="">Selecione...</option>'+srt().map(function(l){return'<option value="'+l.id+'">'+l.nome+'</option>';}).join('');if(sv)sl.value=sv;}
+  if(sl){sl.innerHTML='<option value="">Selecione...</option>'+ST.lideres.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(l){return'<option value="'+l.id+'">'+l.nome+'</option>';}).join('');if(sv)sl.value=sv;}
   var la=el('lideres-adm');
   if(la)la.innerHTML=srt().map(function(l){
     return'<div class="lider-row" style="flex-direction:column;align-items:stretch;gap:0;">'
