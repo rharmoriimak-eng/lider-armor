@@ -1562,7 +1562,7 @@ window.regXP=function(){
   var xp=isc?cx:parseInt(av.split('|')[0]),acao=av.split('|')[1];
   var l=ST.lideres.find(function(x){return x.id===lid;});
   var na=nv(l.xp);l.xp+=xp;var nd=nv(l.xp);
-  ST.log.push({nome:l.nome,acao:acao,xp:xp,ts:Date.now()});
+  ST.log.push({nome:l.nome,acao:acao,xp:xp,ts:Date.now()});if(fbRef){fbRef.set(ST);}
   render();playCoin();showXpPop(xp);
   if(na.label!==nd.label)setTimeout(function(){playLevelUp();showLU(l.nome,nd);},700);
   else toast('✅ +'+xp+' XP · '+l.nome.split(' ')[0]+'!');
