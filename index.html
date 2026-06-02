@@ -1090,7 +1090,7 @@ function nxNv(xp){return NIVEIS.find(function(n){return xp<n.min;})||null;}
 function pct(xp){var n=nv(xp),nx=nxNv(xp);if(!nx)return 100;return Math.round((xp-n.min)/(nx.min-n.min)*100);}
 function ini(s){return s.trim().split(/\s+/).slice(0,2).map(function(p){return p[0];}).join('').toUpperCase();}
 function cor(id){return CORES[(id-1)%CORES.length];}
-function srt(){return ST.lideres.slice().sort(function(a,b){return b.xp-a.xp;});}
+function srt(){return ST.lideres.slice().sort(function(a,b){return b.xp-a.xp||a.id-b.id;});}
 function ago(ts){var m=Math.floor((Date.now()-ts)/60000);if(m<1)return'agora';if(m<60)return'há '+m+'min';var h=Math.floor(m/60);if(h<24)return'há '+h+'h';return'há '+Math.floor(h/24)+'d';}
 function el(id){return document.getElementById(id);}
 function totalXP(){return ST.lideres.reduce(function(a,l){return a+l.xp;},0);}
